@@ -13,3 +13,8 @@
 ## Open another terminal and check
 
 `docker ps`
+
+## AI implementation path
+
+`app\core\config.py`
+`app\services\performance_insights.py`

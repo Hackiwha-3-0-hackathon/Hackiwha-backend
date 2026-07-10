@@ -4,3 +4,7 @@ sqlalchemy
 pymysql
 python-dotenv
 alembic
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic-settings
+httpx
