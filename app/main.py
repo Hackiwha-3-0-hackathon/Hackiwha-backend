@@ -1,9 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(
-    title="Hackiwha API"
-)
+from app.api.v1.api import api_router
+from app.core.config import settings
 
-@app.get("/")
-def root():
-    return {"message": "Root Path"}
+app = FastAPI(title=settings.PROJECT_NAME)
+
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.BACKEND_CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+app.include_router(api_router, prefix="/api/v1")
+
+
+@app.get("/", tags=["health"])
+def health_check():
+    return {"status": "ok", "project": settings.PROJECT_NAME}
