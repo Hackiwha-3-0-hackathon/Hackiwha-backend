@@ -6,4 +6,4 @@ app = FastAPI(
 
 @app.get("/")
 def root():
-    return {"message": "Hello world!"}
+    return {"message": "Root Path"}
