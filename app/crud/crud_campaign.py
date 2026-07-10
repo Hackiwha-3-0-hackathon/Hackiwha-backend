@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-
 from app.crud.base import CRUDBase
 from app.models.campaign import Campaign, CampaignStatus
 from app.schemas.campaign import CampaignCreate, CampaignUpdate

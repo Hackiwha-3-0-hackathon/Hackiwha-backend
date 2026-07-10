@@ -6,6 +6,10 @@ python-dotenv
 alembic
 python-jose[cryptography]
 passlib[bcrypt]
+bcrypt==3.2.2
 pydantic-settings
 httpx
 alembic>=1.13.0
+pydantic[email]
+python-multipart
+pytest

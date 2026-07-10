@@ -18,3 +18,7 @@
 
 `app\core\config.py`
 `app\services\performance_insights.py`
+
+## Check docker logs
+
+`docker compose logs`
