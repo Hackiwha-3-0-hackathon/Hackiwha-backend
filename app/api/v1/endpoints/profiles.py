@@ -1,3 +1,5 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.core.deps import get_current_active_user
@@ -9,13 +11,11 @@ from app.schemas.profile import ProfileCreate, ProfileOut, ProfileUpdate
 router = APIRouter()
 
 
-@router.get("/me", response_model=ProfileOut)
+@router.get("/me", response_model=Optional[ProfileOut])
 def read_my_profile(
     db: Session = Depends(get_db), current_user: User = Depends(get_current_active_user)
 ):
     profile = crud_profile.get_by_user_id(db, user_id=current_user.id)
-    if not profile:
-        raise HTTPException(status_code=404, detail="Profile not found")
     return profile
 
 
